@@ -1,3 +1,5 @@
 node_modules/
 build/
 config/
+# Just for local dev, so can be commited
+!config/.env.dev
