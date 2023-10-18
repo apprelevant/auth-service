@@ -1,11 +1,11 @@
 {
-  "name": "auth-service",
+  "name": "auth-module",
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kevinDeckerBN/auth-service"
+    "url": "https://github.com/kevinDeckerBN/auth-module"
   },
   "scripts": {
     "build": "tsc",
