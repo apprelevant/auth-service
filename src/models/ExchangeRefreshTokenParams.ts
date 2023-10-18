@@ -1,3 +1,3 @@
 export interface ExchangeRefreshTokenParams {
-    refreshToken: string;
+  refreshToken: string;
 }
