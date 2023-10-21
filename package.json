@@ -1,11 +1,11 @@
 {
-  "name": "auth-module",
+  "name": "auth-service",
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kevinDeckerBN/auth-module"
+    "url": "https://github.com/dex-ldn/auth-service.git"
   },
   "scripts": {
     "build": "tsc",
@@ -24,8 +24,6 @@
     "@types/express-session": "^1.17.8",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.8.3",
-    "@types/passport": "^1.0.13",
-    "@types/passport-jwt": "^3.0.10",
     "@types/uuid": "^9.0.5",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
@@ -45,8 +43,6 @@
     "http-status-codes": "^2.3.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.0",
-    "passport": "^0.6.0",
-    "passport-jwt": "^4.0.1",
     "uuid": "^9.0.1"
   }
 }

@@ -1,6 +1,5 @@
 import express, { Request, Response } from 'express';
 import { AuthController } from '../controllers/auth-controller';
-import passport from 'passport';
 const router = express.Router();
 
 const authController = new AuthController();
@@ -17,12 +16,12 @@ router.post(
     await authController.loginUserViaEmail(req, res)
 );
 
-router.post(
-  '/refresh',
-  passport.authenticate('jwt', { session: false }),
-  async (req: Request, res: Response) => {
-    await authController.exchangeRefreshToken(req, res);
-  }
-);
+router.post('/refresh', async (req: Request, res: Response) => {
+  await authController.exchangeRefreshToken(req, res);
+});
+
+router.post('/verify', async (req: Request, res: Response) => {
+  await authController.verifyToken(req, res);
+});
 
 export default router;

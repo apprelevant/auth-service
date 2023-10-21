@@ -86,4 +86,13 @@ export default class AuthService {
       throw new Error('Unauthorized');
     }
   };
+
+  verifyToken = (accessToken: string) => {
+    try {
+      jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 }

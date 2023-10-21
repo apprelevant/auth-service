@@ -20,13 +20,17 @@ export class AuthController {
   ): Promise<Response> {
     const { email, username, password } = req.body as UserCreationParams;
 
-    const authorizedUser = await this.authService.registerUserViaEmail({
-      email,
-      username,
-      password,
-    });
-    req.user = authorizedUser;
-    return res.status(StatusCodes.CREATED).json(authorizedUser);
+    try {
+      const authorizedUser = await this.authService.registerUserViaEmail({
+        email,
+        username,
+        password,
+      });
+      req.user = authorizedUser;
+      return res.status(StatusCodes.CREATED).json(authorizedUser);
+    } catch (error) {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+    }
   }
 
   public async loginUserViaEmail(
@@ -34,13 +38,17 @@ export class AuthController {
     res: Response
   ): Promise<Response> {
     const { email, password } = req.body as LoginDetails;
-    const authorizedUser = await this.authService.loginUserViaEmail({
-      email,
-      password,
-    });
-    req.user = authorizedUser;
+    try {
+      const authorizedUser = await this.authService.loginUserViaEmail({
+        email,
+        password,
+      });
+      req.user = authorizedUser;
 
-    return res.status(StatusCodes.OK).json(authorizedUser);
+      return res.status(StatusCodes.OK).json(authorizedUser);
+    } catch (error) {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+    }
   }
 
   public async exchangeRefreshToken(
@@ -60,6 +68,15 @@ export class AuthController {
       }
     } catch (error) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+    }
+  }
+
+  public async verifyToken(req: Request, res: Response): Promise<Response> {
+    const { accessToken } = req.body;
+    if (await this.authService.verifyToken(accessToken)) {
+      return res.sendStatus(StatusCodes.OK);
+    } else {
+      return res.sendStatus(StatusCodes.UNAUTHORIZED);
     }
   }
 }
