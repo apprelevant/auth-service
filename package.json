@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "NODE_ENV=dev nodemon",
+    "dev": "NODE_ENV=local nodemon",
     "lint": "eslint . --ext .ts --fix",
     "start": "node build/index.js"    
   },

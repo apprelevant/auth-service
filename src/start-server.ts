@@ -22,6 +22,10 @@ export default function startServer(expressApplication: Express) {
     }
   });
 
+  expressApplication.get('/', (_, res) =>
+    res.status(200).send('<h1>Auth Server</h1>')
+  );
+
   expressApplication.post('/', (_, res) =>
     res.status(200).json({ message: 'Ping' })
   );
