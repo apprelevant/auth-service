@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "NODE_ENV=dev nodemon",
-    "lint": "eslint . --ext .ts --fix"
+    "lint": "eslint . --ext .ts --fix",
+    "start": "node build/index.js"    
   },
   "keywords": [
     "auth",
