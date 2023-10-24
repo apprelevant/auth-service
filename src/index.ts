@@ -21,7 +21,7 @@ expressApplication.use(express.json());
 expressApplication.use(passport.initialize());
 
 // Routing
-expressApplication.use('/api/v1/auth', authRouter);
+expressApplication.use('/v1/auth', authRouter);
 
 startServer(expressApplication);
 

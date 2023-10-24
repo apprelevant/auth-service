@@ -64,19 +64,18 @@ export class AuthController {
         );
         return res.status(StatusCodes.OK).json(updated);
       } else {
-        return res.status(StatusCodes.UNAUTHORIZED);
+        return res
+          .status(StatusCodes.UNAUTHORIZED)
+          .json({ error: 'Unauthorized' });
       }
     } catch (error) {
       return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
     }
   }
 
+  // If the auth-middleware did not throw an error, the accessToken is still valid
+  // so simply return a 200
   public async verifyToken(req: Request, res: Response): Promise<Response> {
-    const { accessToken } = req.body;
-    if (await this.authService.verifyToken(accessToken)) {
-      return res.sendStatus(StatusCodes.OK);
-    } else {
-      return res.sendStatus(StatusCodes.UNAUTHORIZED);
-    }
+    return res.sendStatus(StatusCodes.OK);
   }
 }
