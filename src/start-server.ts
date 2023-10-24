@@ -26,7 +26,7 @@ export default function startServer(expressApplication: Express) {
     res.status(200).json({ message: 'Ping' })
   );
 
-  const serverPort = process.env.SERVER_PORT || process.env.PORT;
+  const serverPort = process.env.PORT || process.env.SERVER_PORT;
   http.createServer(expressApplication).listen(serverPort, () => {
     // eslint-disable-next-line no-console
     console.log(`Server is running at ${serverPort}`);
