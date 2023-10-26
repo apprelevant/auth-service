@@ -29,7 +29,14 @@ export class AuthController {
       req.user = authorizedUser;
       return res.status(StatusCodes.CREATED).json(authorizedUser);
     } catch (error) {
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+      if (error instanceof Error) {
+        return res
+          .status(StatusCodes.INTERNAL_SERVER_ERROR)
+          .json({ error: error.message });
+      }
+      return res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json({ error: String(error) });
     }
   }
 
@@ -47,7 +54,14 @@ export class AuthController {
 
       return res.status(StatusCodes.OK).json(authorizedUser);
     } catch (error) {
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+      if (error instanceof Error) {
+        return res
+          .status(StatusCodes.INTERNAL_SERVER_ERROR)
+          .json({ error: error.message });
+      }
+      return res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json({ error: String(error) });
     }
   }
 
@@ -69,7 +83,14 @@ export class AuthController {
           .json({ error: 'Unauthorized' });
       }
     } catch (error) {
-      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error });
+      if (error instanceof Error) {
+        return res
+          .status(StatusCodes.INTERNAL_SERVER_ERROR)
+          .json({ error: error.message });
+      }
+      return res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json({ error: String(error) });
     }
   }
 

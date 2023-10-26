@@ -36,18 +36,25 @@ export default class AuthService {
   registerUserViaEmail = async (
     userDetails: UserCreationParams
   ): Promise<AuthenticatedUser> => {
-    const user: UserDocument = await User.create(userDetails);
-    const uuid = uuidv4();
-    const accessToken = await user.createAccessToken(uuid);
-    const refreshToken = await user.createRefreshToken(uuid);
+    try {
+      const user: UserDocument = await User.create(userDetails);
+      const uuid = uuidv4();
+      const accessToken = await user.createAccessToken(uuid);
+      const refreshToken = await user.createRefreshToken(uuid);
 
-    return {
-      _id: user._id,
-      email: user.email,
-      username: user.username,
-      accessToken,
-      refreshToken,
-    };
+      return {
+        _id: user._id,
+        email: user.email,
+        username: user.username,
+        accessToken,
+        refreshToken,
+      };
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
+      throw new Error('Could not create new user');
+    }
   };
 
   exchangeRefreshToken = async (
