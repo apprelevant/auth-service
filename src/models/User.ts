@@ -5,14 +5,12 @@ import jwt from 'jsonwebtoken';
 export interface User {
   id: Types.ObjectId;
   email: string;
-  username: string;
   password: string;
 }
 
 export const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  username: { type: String, required: true, unique: true },
 });
 
 UserSchema.pre('save', async function (next) {
@@ -60,7 +58,6 @@ UserSchema.methods.createRefreshToken = function (uuid: string): string {
 export interface UserDocument extends Document {
   email: string;
   password: string;
-  username: string;
   comparePassword: (enteredPassword: string) => Promise<boolean>;
   createAccessToken: (uuid: string) => Promise<string>;
   createRefreshToken: (uuid: string) => Promise<string>;

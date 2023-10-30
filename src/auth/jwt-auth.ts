@@ -28,7 +28,6 @@ export default function setupJWTAuth() {
             const authenticatedUser: AuthenticatedUser = {
               _id,
               email: user.email,
-              username: user.username,
             };
             return done(null, authenticatedUser);
           } else {
