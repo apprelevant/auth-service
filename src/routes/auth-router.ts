@@ -6,7 +6,7 @@ const router = express.Router();
 const authController = new AuthController();
 
 router.post(
-  '/register',
+  '/register/email',
   async (req: Request, res: Response) =>
     await authController.registerNewUserViaEmail(req, res)
 );
