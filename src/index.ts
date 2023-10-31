@@ -29,8 +29,9 @@ startServer(expressApplication);
 mongoose
   .connect(`${process.env.DATABASE_URL}`, { retryWrites: true, w: 'majority' })
   .then(() => {
-    console.log('Mongo connected successfully.');
+    console.log('Mongo connected successfully!');
   })
   .catch((error) => {
+    console.log('Mongo connection error!');
     console.log(error);
   });

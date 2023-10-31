@@ -31,7 +31,7 @@ UserSchema.methods.comparePassword = function (
 
 UserSchema.methods.createAccessToken = function (uuid: string): string {
   const accessToken = jwt.sign(
-    { _id: this._id, email: this.email, username: this.username },
+    { _id: this._id, email: this.email },
     process.env.ACCESS_TOKEN_SECRET,
     {
       expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
@@ -44,7 +44,7 @@ UserSchema.methods.createAccessToken = function (uuid: string): string {
 
 UserSchema.methods.createRefreshToken = function (uuid: string): string {
   const refreshToken = jwt.sign(
-    { _id: this._id, email: this.email, username: this.username },
+    { _id: this._id, email: this.email },
     process.env.REFRESH_TOKEN_SECRET,
     {
       expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
