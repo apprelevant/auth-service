@@ -70,6 +70,8 @@ export class AuthController {
     res: Response
   ): Promise<Response> {
     const { refreshToken } = req.body as ExchangeRefreshTokenParams;
+    if (!refreshToken)
+      return res.status(StatusCodes.BAD_REQUEST).json({ error: 'Bad request' });
     try {
       if (req.user) {
         const updated = await this.authService.exchangeRefreshToken(
