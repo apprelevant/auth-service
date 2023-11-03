@@ -18,12 +18,11 @@ export class AuthController {
     req: Request,
     res: Response
   ): Promise<Response> {
-    const { email, username, password } = req.body as UserCreationParams;
+    const { email, password } = req.body as UserCreationParams;
 
     try {
       const authorizedUser = await this.authService.registerUserViaEmail({
         email,
-        username,
         password,
       });
       req.user = authorizedUser;
