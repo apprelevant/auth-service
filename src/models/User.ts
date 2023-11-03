@@ -10,16 +10,22 @@ export interface User {
   role: UserRole;
 }
 
-export const UserSchema = new Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  role: {
-    type: String,
-    required: true,
-    default: UserRole.USER,
-    enum: UserRole,
+export const UserSchema = new Schema(
+  {
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    role: {
+      type: String,
+      required: true,
+      default: UserRole.USER,
+      enum: UserRole,
+    },
   },
-});
+  {
+    timestamps: true,
+    versionKey: 'versionKey',
+  }
+);
 
 UserSchema.pre('save', async function (next) {
   // only do this for new users
