@@ -16,7 +16,7 @@ export default class AuthService {
     if (!user) {
       throw new Error('Unauthorized');
     }
-    if (!user.comparePassword(authDetails.password)) {
+    if (!(await user.comparePassword(authDetails.password))) {
       throw new Error('Unauthorized');
     }
 

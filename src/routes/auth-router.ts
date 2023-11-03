@@ -19,7 +19,7 @@ router.post(
 
 router.post(
   '/refresh',
-  passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwtNoExpiration', { session: false }),
   async (req: Request, res: Response) => {
     await authController.exchangeRefreshToken(req, res);
   }
