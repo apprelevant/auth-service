@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import express from 'express';
 import passport from 'passport';
+import cors from 'cors';
 
 import setupJWTAuth from './auth/jwt-auth';
 import authRouter from './routes/auth-router';
@@ -18,6 +19,7 @@ setupJWTAuth();
 
 expressApplication.use(express.urlencoded({ extended: true }));
 expressApplication.use(express.json());
+expressApplication.use(cors());
 expressApplication.use(passport.initialize());
 
 // Routing
