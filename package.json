@@ -18,8 +18,8 @@
     "local": "NODE_ENV=local nodemon src/index.ts",
     "lint": "eslint . --ext .ts",
     "test": "jest",
-    "mongo:dev": "docker-compose up -d",
-    "mongo:down": "docker-compose down"
+    "mongo:start": "docker-compose up -d",
+    "mongo:stop": "docker-compose down"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
