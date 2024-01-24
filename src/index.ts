@@ -23,7 +23,7 @@ expressApplication.use(cors());
 expressApplication.use(passport.initialize());
 
 // Routing
-expressApplication.use('/v1/auth', authRouter);
+expressApplication.use('/', authRouter);
 
 startServer(expressApplication);
 

@@ -3,3 +3,7 @@ build/
 config/
 # Just for local dev, so can be commited
 !config/.env.local
+
+/coverage/
+
+globalConfig.json
