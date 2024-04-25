@@ -19,7 +19,8 @@
     "lint": "eslint . --ext .ts",
     "test": "jest",
     "mongo:start": "docker-compose up -d",
-    "mongo:stop": "docker-compose down"
+    "mongo:stop": "docker-compose down",
+    "prod": "NODE_ENV=prod node build/index.js"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

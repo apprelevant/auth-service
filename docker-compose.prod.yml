@@ -1,12 +1,11 @@
 services:
   api:
-    build: 
+    build:
       context: .
-      target: build
-    env_file: ./config/.env.local
+      target: production
     ports:
       - 4000:4000
-    command: npm run dev
+    env_file: ./config/.env.production
   mongodb:
     image: mongo:6-jammy
     ports:
